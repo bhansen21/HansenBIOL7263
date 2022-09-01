@@ -1,0 +1,7 @@
+---
+title: "Assignment1"
+author: "Bekah Hansen"
+date: "`r Sys.Date()`"
+output: html_document
+---
+hello world
