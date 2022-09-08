@@ -4,4 +4,18 @@ author: "Bekah Hansen"
 date: "`r Sys.Date()`"
 output: html_document
 ---
-[Assignment1](Assignments/Assignment1.html)
+
+# Educational Experience
+Hi, my name is Bekah I am a masters student at The University of Tulsa. I am currently studying snapping shrimp  working mostly with the species *Alpheus heterochaelis*. 
+
+## Research Interests
+[Kingston Lab Website](https://www.kingston-lab.com/)
+
+![*Alpheus heterochaelis*](images/SS.jpeg)
+
+## Tables
+
+| Date | Description | Assignment Name |
+| :-- | :-- | :-- |
+| September 1st 2022 | Setup an R project | [Assignment 1](Assignments/Assignment1.html) |
+| September 8th 2022 | Practicing Rmarkdown language | [Assignment 2](index.html) |
