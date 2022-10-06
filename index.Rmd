@@ -2,7 +2,11 @@
 title: "BIOL7263 Portfolio"
 author: "Bekah Hansen"
 date: "`r Sys.Date()`"
-output: html_document
+output: 
+  prettydoc::html_pretty:
+    theme: tactile
+    highlight: github
+  
 ---
 
 # Educational Experience
@@ -19,3 +23,9 @@ Hi, my name is Bekah. I am a masters student at The University of Tulsa. I am cu
 | :-- | :-- | :-- |
 | September 1st 2022 | Setup R project and git account | [Assignment 1](Assignments/Assignment1.html) |
 | September 8th 2022 | Practice Rmarkdown language | [Assignment 2](index.html) |
+| September 15th 2022 | Regular expression challenge | [Assignment 3](Assignments/Assignment3.html) |
+| September 26th 2022 | Tidy, merge, and compare data sets, dplyr | [Assignment 4](Assignments/Assignment4.html) |
+| September 26th 2022 | Tidy, merge, and compare data sets, tidyr| [Assignment 5](Assignments/Assignment5.html) |
+
+
+
