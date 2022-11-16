@@ -1,0 +1,19 @@
+---
+title: "Assignment 6"
+author: "Bekah Hansen"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+Animal 1
+*Crangon septemspinosa* CPD = 0.13
+![2 inches away](images/2in.png)
+![1 inch away](images/1in.png)
+![half an inch away](images/0.5in.png)
+Animal 2
+Animal 3
+Animal 4
+*Aquila audax* CPD = 140
+![At 60 feet away a mouse of 6 inches in diameter looks like](Assignments/720inaway6indiameter mouseeagle.png)
+![Mouse](Assignments/fourthimage.jpg)
+Animal 5

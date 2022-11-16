@@ -1,0 +1,10 @@
+---
+title: "Acuity view"
+author: "Bekah Hansen"
+date: "`r Sys.Date()`"
+output: html_document
+---
+install.packages("AcuityView")
+install.packages("magrittr")
+install.packages("acuityview")
+

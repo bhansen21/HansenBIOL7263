@@ -11,7 +11,7 @@
 
 <meta name="author" content="Bekah Hansen" />
 
-<meta name="date" content="2022-10-03" />
+<meta name="date" content="2022-11-07" />
 
 <title>Assignment4</title>
 
@@ -365,12 +365,75 @@ pre code {
 
 <h1 class="title toc-ignore">Assignment4</h1>
 <h4 class="author">Bekah Hansen</h4>
-<h4 class="date">2022-10-03</h4>
+<h4 class="date">2022-11-07</h4>
 
 </div>
 
 
-
+<p>For these exercise download and import the data files containing my
+Ebird observations from here: <a href="https://github.com/mbtoomey/Biol_7263/blob/main/Data/MBT_ebird.csv?raw=true" class="uri">https://github.com/mbtoomey/Biol_7263/blob/main/Data/MBT_ebird.csv?raw=true</a></p>
+<p>#load packages library(dplyr) library(tidyverse)
+MBT_ebird&lt;-read_csv(“<a href="https://github.com/mbtoomey/Biol_7263/blob/main/Data/MBT_ebird.csv?raw=true" class="uri">https://github.com/mbtoomey/Biol_7263/blob/main/Data/MBT_ebird.csv?raw=true</a>”)
+head(MBT_ebird)</p>
+<p>#In which year did I observe the most individual birds? How many?</p>
+<p>MBT_ebird &lt;- group_by(MBT_ebird, year) ungroup(MBT_ebird)</p>
+<p>#this pulled just a column of the years MBT_years &lt;-
+select(MBT_ebird, matches(“year”))</p>
+<p>#this pulled the coulmns i wanted but did not consolidate the years
+like i wanted it too MBT_years2 &lt;- select(MBT_ebird, common_name,
+count, year)</p>
+<p>#this returned a tibble with the year and total amount of birds seen
+for that year each in their own column summarize(MBT_ebird,
+birdtotal=max(count_tot, na.rm=TRUE)) # in 2020 the most individual
+birds were observed at 3154. # A tibble: 13 × 2 year birdtotal <dbl>
+<dbl> 1 2003 18 2 2004 228 3 2009 25 4 2013 106 5 2014 469 6 2015 253 7
+2016 87 8 2017 515 9 2018 275 10 2019 88 11 2020 3154 12 2021 696 13
+2022 582</p>
+<p>#In that year how many different species of birds did I observe?</p>
+<p>#filter for just the 2020 data MBT_ebird2020 &lt;- filter(MBT_ebird,
+year == 2020)</p>
+<p>MBT_ebird2020 &lt;- group_by(MBT_ebird2020, scientific_name) #this
+give us the amount of species record for 2020 (146) and the following
+value is a 1 indicating the year 2020</p>
+<p>[1] 146 1</p>
+<p>#In which state did I most frequently observe Red-winged
+Blackbirds?</p>
+<p>dim(summarize(MBT_ebird2020))</p>
+<p>MBT_ebird &lt;- group_by(MBT_ebird, location, common_name, count)
+dim(summarize(MBT_ebird)) ungroup(MBT_ebird)</p>
+<p>#this put out a tibble with coulmns grouped by location, common name,
+count, and rwbb summarize(MBT_ebird, rwbb=max(count_tot,
+na.rm=TRUE))</p>
+<p>#this pulled out only the entries for RWBB MBT_ebirdRWBB &lt;-
+filter(MBT_ebird, common_name == “Red-winged Blackbird”)</p>
+<p>MBT_ebirdRWBB &lt;- group_by(MBT_ebirdRWBB, location) # this takes
+the data that has been summarized by location and condeses the count_tot
+of each bird observed in a state and condenses it
+summarize(MBT_ebirdRWBB, RWBB_sum=sum(count_tot)) #The state with the
+most observations of RWBB is Missouri # A tibble: 5 × 2 location
+RWBB_sum <chr> <dbl> 1 US-FL 168 2 US-IL 30 3 US-MO 8443 4 US-OK 6861 5
+US-VT 391</p>
+<p>#Filter observations for a duration between 5 and 200 minutes.
+Calculate the mean rate per checklist that I encounter species each
+year. Specifically, calculate the number of species in each checklist
+divided by duration and then take the mean for the year.</p>
+<p>MBT_ebird_duration &lt;- filter(MBT_ebird, duration &lt;= “200” |
+duration &gt;= “5”) MBT_ebird_duration &lt;- filter(MBT_ebird_duration,
+duration != “0”) MBT_ebird_duration &lt;- filter(MBT_ebird_duration,
+duration != “2”)</p>
+<p>MBT_ebirdmutate &lt;- mutate(MBT_ebird_duration, rate =
+n_distinct(common_name)/(duration))</p>
+<p>MBT_ebirdmean %&gt;% group_by(year) %&gt;% mutate(yrmean =
+mean(rate)) view(MBT_ebirdmean)</p>
+<p>#Create a tibble that includes the complete observations for the top
+10 most frequently observed species. First generate a top 10 list and
+then use this list to filter all observations. Export this tibble as a
+.csv file saved to a folder called “Results” folder within your R
+project and add link to the markdown document.</p>
+<p>#create a list of 10 MBT_ebird10 &lt;- MBT_ebird %&gt;%
+count(common_name) %&gt;% arrange(by=(desc(n))) MBT_ebird10 &lt;-
+as.list(MBT_ebird10$common_name[1:10])</p>
+<p>#convert this list to a tibble</p>
 
 
 
