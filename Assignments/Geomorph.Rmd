@@ -1,0 +1,77 @@
+---
+title: "geomorph"
+author: "Bekah Hansen"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# **GEOMORPH**
+
+`Install Geomorph`
+```
+install.packages("geomorph", dependencies = TRUE)
+```
+
+`Load Geomorph`
+```
+library(geomorph)
+```
+
+Create a folder inside your assignments folder to store your jpeg files. These must be jpegs, there are other packages that allow you to analyze other file types. 
+
+I created a folder in my assignments folder titled "my work"
+
+```
+Set working directory to the folder with your images
+```
+
+`Make a file list from the images in your folder`
+```
+filelist <- list.files(pattern = "*.jpeg")
+```
+
+`Set scale and select landmarks`
+
+Digitize your photos by selecting landmarks. You need to choose images with a scale such as a ruler in the photo to get an accurate measurement. 
+nlandmarks- the number of points you will mark on your photo
+scale- the amount in mm you will set
+
+This should pull up the first image you have in your filelist. It will have you set a scale, the first two clicks are setting the scalebar. 
+  It will something along the lines of is this the scale you want to set? (y/n). Select y if it is satisfactory. 
+```
+digitize2d(filelist, nlandmarks = 11, scale = 3, tpsfile = "shrimp3.tps", verbose = TRUE)
+```
+Now it is asking you to set your landmark points. You can set as many landmark features as you want, I would suggest doing around ten. After each selection you need to enter 'y' to move onto the next landmark. 
+
+After digitizing this, all the points have been landmarked in shrimp3.tps
+
+mydata <- readland.tps("shrimp3.tps", specID= "ID")
+
+#lets you view your data
+mydata
+
+# this worked
+Y.gpa <- gpagen(mydata, print.progress = FALSE)
+ref <- mshape(Y.gpa$coords)
+
+#this worked. the 2 is the second number in the dataset ? lol
+plotRefToTarget(ref, Y.gpa$coords[,,2], method="TPS")
+
+#magnifies the difference X3
+plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="TPS")
+
+#shows the displacement between landmarks, it is comparing the reference and target specimen
+plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="vector")
+
+#showing both plots of data the reference and the target
+plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="points")
+
+#moving onto something different
+findMeanSpec(Y.gpa$coords)
+# returens the name of the specimen and the number it is
+
+# can plot all specimens 
+Y.gpa <- gpagen(mydata, print.progress = FALSE)
+
+# this takes the data and however many photos you have with landmarks and takes the mean between all of the points
+plotAllSpecimens(Y.gpa$coords, label=T, plot.param = list(pt.bg = "green", mean.cex=1, link.col= "red", txt.pos=3, txt.cex=1))
