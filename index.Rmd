@@ -27,5 +27,5 @@ Hi, my name is Bekah. I am a masters student at The University of Tulsa. I am cu
 | September 26th 2022 | Tidy, merge, and compare data sets, dplyr | [Assignment 4](Assignments/Assignment4.html) |
 | September 26th 2022 | Tidy, merge, and compare data sets, tidyr| [Assignment 5](Assignments/Assignment5.html) |
 | October 27th 2022 | Visual Acuity | [Assignment 6](Assignments/Visual Acuity.html) |
-| November 16th 2022 | My presentation: Geomorph | [Geomorph assignment](Geomorphassign.html)
+| November 16th 2022 | My presentation: Geomorph | [Geomorph assignment](Assignments/Geomorph.html) 
 
