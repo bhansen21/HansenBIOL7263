@@ -38,6 +38,7 @@ scale- the amount in mm you will set
 
 This should pull up the first image you have in your filelist. It will have you set a scale, the first two clicks are setting the scalebar. 
   It will something along the lines of is this the scale you want to set? (y/n). Select y if it is satisfactory. 
+
 ```
 digitize2d(filelist, nlandmarks = 11, scale = 3, tpsfile = "shrimp3.tps", verbose = TRUE)
 ```
