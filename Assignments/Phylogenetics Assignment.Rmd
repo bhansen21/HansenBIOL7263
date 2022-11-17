@@ -1,0 +1,22 @@
+---
+title: "Phylo Assignment"
+author: "Bekah Hansen"
+date: "`r Sys.Date()`"
+output: html_document
+---
+**Phylogenetic Assignment**
+
+`Code to make phylogenetic tree`
+```
+BekahT<-
+  "((Bermudacaris), (Automate, Cornoalpheus, (Alpheus, (Racillus, (Leptalpheus, (Parabetaeus, Synalpheus))))));"
+Bekahwow<-read.tree(text=BekahT)
+plotTree(Bekahwow,ftype="reg")
+```
+
+`Change color of the tree`
+```
+plot(Bekahwow, edge.color = "purple", label.offset = 0.2, type = "phylogram")
+```
+
+![Phylogenetic Snapping Shrimp Tree](Snapping_Shrimp_Phylo.jpeg)

@@ -110,3 +110,37 @@ findMeanSpec(Y.gpa$coords)
 Y.gpa <- gpagen(mydata, print.progress = FALSE)
 
 plotAllSpecimens(Y.gpa$coords, label=T, plot.param = list(pt.bg = "green", mean.cex=1, link.col= "red", txt.pos=3, txt.cex=1))
+
+# salamanders
+library(geomorph)
+data("plethodon")
+Y.gpa<-gpagen(plethodon$land, print.progress = FALSE) 
+ref<-mshape(Y.gpa$coords)
+plotRefToTarget(ref,Y.gpa$coords[,,39], method="TPS")
+plotRefToTarget(ref,Y.gpa$coords[,,39],method="points", mag=3, links = plethodon$links)
+plotRefToTarget(ref,Y.gpa$coords[,,39], method ="TPS",
+                outline=plethodon$outline)
+plotRefToTarget(ref,Y.gpa$coords[,,39], mag=2, method ="points",
+                outline=plethodon$outline)
+# 2d scallops
+data(scallops)
+Y.gpa<-gpagen(A=scallops$coorddata, curves=scallops$curvslide,
+              surfaces=scallops$surfslide, PrinAxes = FALSE, print.progress = FALSE)
+ref<-mshape(Y.gpa$coords)
+plotRefToTarget(ref,Y.gpa$coords[,,1],method="TPS", mag=3)
+plotRefToTarget(ref,Y.gpa$coords[,,1],method="vector", mag=3)
+plotRefToTarget(ref,Y.gpa$coords[,,1],method="points", mag=3)
+install.packages(mesh3d)
+ref <- mshape(Y.gpa$coords) # calculate the mean shape from set of GPA-aligned specimens
+plotRefToTarget(M1=ref, M2=Y.gpa$coords[,,1], mesh=averagemesh, method="surface")
+
+# 3d scallop
+Y.gpa <- gpagen(A=scallops$coorddata, curves=scallops$curvslide,
+                surfaces=scallops$surfslide, print.progress = FALSE)
+scallinks <- matrix(c(1,rep(2:16, each=2),1), nrow=16, byrow=TRUE) # make links matrix
+plotAllSpecimens(Y.gpa$coords,links=scallinks,
+                 plot.param= list(pt.bg = "blue",link.col="red"))
+
+# other 3d scallop
+data(scallopPLY) #load example dataset
+plotspec(spec=scallopPLY$ply, digitspec=scallopPLY$coords, fixed=16, centered =TRUE)
