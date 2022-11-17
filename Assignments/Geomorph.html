@@ -391,34 +391,30 @@ landmark features as you want, I would suggest doing around ten. After
 each selection you need to enter ‘y’ to move onto the next landmark.</p>
 <p>After digitizing this, all the points have been landmarked in
 shrimp3.tps</p>
-<p>mydata &lt;- readland.tps(“shrimp3.tps”, specID= “ID”)</p>
-<p>#lets you view your data mydata</p>
+<p><code>Make a data file</code></p>
+<pre><code>mydata &lt;- readland.tps(&quot;shrimp3.tps&quot;, specID= &quot;ID&quot;)</code></pre>
+<p><code>Need to create both of these files to be able to plot data</code></p>
+<pre><code>Y.gpa &lt;- gpagen(mydata, print.progress = FALSE)
+
+ref &lt;- mshape(Y.gpa$coords)</code></pre>
+<p><code>This takes your landmark data and plots it</code></p>
+<pre><code>plotRefToTarget(ref, Y.gpa$coords[,,2], method=&quot;TPS&quot;)</code></pre>
+<p><code>Takes landmark data and magnifies the difference between your reference and target by 3X</code></p>
+<pre><code>plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method=&quot;TPS&quot;)</code></pre>
+<p><code>Shows the displacement between target and reference sequence using the vector method. Arrows show direction of displacement</code></p>
+<pre><code>plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method=&quot;vector&quot;)</code></pre>
+<p><code>Plots both the reference and the target landmark data, one in black one in grey</code></p>
+<pre><code>plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method=&quot;points&quot;)</code></pre>
 </div>
-<div id="this-worked" class="section level1">
-<h1>this worked</h1>
-<p>Y.gpa &lt;- gpagen(mydata, print.progress = FALSE) ref &lt;-
-mshape(Y.gpa$coords)</p>
-<p>#this worked. the 2 is the second number in the dataset ? lol
-plotRefToTarget(ref, Y.gpa$coords[,,2], method=“TPS”)</p>
-<p>#magnifies the difference X3 plotRefToTarget(ref, Y.gpa$coords[,,2],
-mag=3, method=“TPS”)</p>
-<p>#shows the displacement between landmarks, it is comparing the
-reference and target specimen plotRefToTarget(ref, Y.gpa$coords[,,2],
-mag=3, method=“vector”)</p>
-<p>#showing both plots of data the reference and the target
-plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method=“points”)</p>
-<p>#moving onto something different findMeanSpec(Y.gpa$coords) #
-returens the name of the specimen and the number it is</p>
-</div>
-<div id="can-plot-all-specimens" class="section level1">
-<h1>can plot all specimens</h1>
+<div id="plot-all-specimens" class="section level1">
+<h1>Plot all specimens</h1>
 <p>Y.gpa &lt;- gpagen(mydata, print.progress = FALSE)</p>
+<p><code>This plots all the landmark data that has been digitized. The green color is your original landmark points and the black is the mean between landmarks.</code></p>
+<pre><code>plotAllSpecimens(Y.gpa$coords, label=T, plot.param = list(pt.bg = &quot;green&quot;, mean.cex=1, link.col= &quot;red&quot;, txt.pos=3, txt.cex=1))</code></pre>
 </div>
-<div id="this-takes-the-data-and-however-many-photos-you-have-with-landmarks-and-takes-the-mean-between-all-of-the-points" class="section level1">
-<h1>this takes the data and however many photos you have with landmarks
-and takes the mean between all of the points</h1>
-<p>plotAllSpecimens(Y.gpa$coords, label=T, plot.param = list(pt.bg =
-“green”, mean.cex=1, link.col= “red”, txt.pos=3, txt.cex=1))</p>
+<div id="assignment" class="section level1">
+<h1>Assignment</h1>
+<pre><code>Chose two images of the same animal and compare a morphological feature through landmarking and plotting its differences with the geomorph package. </code></pre>
 </div>
 
 

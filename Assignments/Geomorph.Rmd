@@ -45,33 +45,47 @@ Now it is asking you to set your landmark points. You can set as many landmark f
 
 After digitizing this, all the points have been landmarked in shrimp3.tps
 
+`Make a data file`
+```
 mydata <- readland.tps("shrimp3.tps", specID= "ID")
+```
 
-#lets you view your data
-mydata
-
-# this worked
+`Need to create both of these files to be able to plot data`
+```
 Y.gpa <- gpagen(mydata, print.progress = FALSE)
+
 ref <- mshape(Y.gpa$coords)
+```
 
-#this worked. the 2 is the second number in the dataset ? lol
+`This takes your landmark data and plots it`
+```
 plotRefToTarget(ref, Y.gpa$coords[,,2], method="TPS")
+```
 
-#magnifies the difference X3
+`Takes landmark data and magnifies the difference between your reference and target by 3X`
+```
 plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="TPS")
+```
 
-#shows the displacement between landmarks, it is comparing the reference and target specimen
+`Shows the displacement between target and reference sequence using the vector method. Arrows show direction of displacement`
+```
 plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="vector")
+```
 
-#showing both plots of data the reference and the target
+`Plots both the reference and the target landmark data, one in black one in grey`
+```
 plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="points")
+```
 
-#moving onto something different
-findMeanSpec(Y.gpa$coords)
-# returens the name of the specimen and the number it is
-
-# can plot all specimens 
+# Plot all specimens 
 Y.gpa <- gpagen(mydata, print.progress = FALSE)
 
-# this takes the data and however many photos you have with landmarks and takes the mean between all of the points
+`This plots all the landmark data that has been digitized. The green color is your original landmark points and the black is the mean between landmarks.`
+```
 plotAllSpecimens(Y.gpa$coords, label=T, plot.param = list(pt.bg = "green", mean.cex=1, link.col= "red", txt.pos=3, txt.cex=1))
+```
+
+# Assignment
+```
+Chose two images of the same animal and compare a morphological feature through landmarking and plotting its differences with the geomorph package. 
+```
