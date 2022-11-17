@@ -90,3 +90,23 @@ mat2.shrimp <- ((4831.8150917743 2686.47178789939), (5015.36369816451 2411.14887
 mat2 <- matrix(mat2.shrimp, nrow=2, ncol=11, byrow=TRUE)
 
 
+
+library(geomorph)
+filelist <- list.files(pattern = "*.jpeg")
+digitize2d(filelist, nlandmarks = 11, scale = 3, tpsfile = "shrimp4.tps", verbose = TRUE)
+
+mydata <- readland.tps("shrimp4.tps", specID= "ID") 
+
+
+Y.gpa <- gpagen(mydata, print.progress = FALSE) 
+ref <- mshape(Y.gpa$coords)
+
+plotRefToTarget(ref, Y.gpa$coords[,,2], method="TPS")
+
+plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="vector")
+
+plotRefToTarget(ref, Y.gpa$coords[,,2], mag=3, method="points")
+findMeanSpec(Y.gpa$coords)
+Y.gpa <- gpagen(mydata, print.progress = FALSE)
+
+plotAllSpecimens(Y.gpa$coords, label=T, plot.param = list(pt.bg = "green", mean.cex=1, link.col= "red", txt.pos=3, txt.cex=1))
