@@ -1,5 +1,5 @@
 ---
-title: "geomorph"
+title: "Bekah Seminar Presentation"
 author: "Bekah Hansen"
 date: "`r Sys.Date()`"
 output: html_document
@@ -88,5 +88,13 @@ plotAllSpecimens(Y.gpa$coords, label=T, plot.param = list(pt.bg = "green", mean.
 
 # Assignment
 ```
-Chose two images of the same animal and compare a morphological feature through landmarking and plotting its differences with the geomorph package. 
+1. Chose two images of the same animal and compare a morphological feature through landmarking (at least ten landmark points.
+2. Make a plot with either plotAllSpecimens or plotRefToTarget (points, vector, or TPS method)
+3. Upload as "Hansen seminar assignment"
 ```
+
+# Helpful Links
+
+[Quick Guide to Geomorph](https://www.researchgate.net/profile/Alexandre_Palaoro/post/Geomorph_Package_in_R/attachment/5cffb777cfe4a7968da98557/AS%3A768610867900420%401560262519604/download/Quick_Guide_to_Geomorph-3.0.pdf)
+
+[Geomorph Package](https://cran.r-project.org/web/packages/geomorph/geomorph.pdf)
