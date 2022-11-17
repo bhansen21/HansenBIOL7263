@@ -7,6 +7,11 @@ output: html_document
 
 # **GEOMORPH**
 
+Download these images if you would like to follow along with my example, or you can use images of your own
+
+[Snapping Shrimp Photos With Scale Bar](https://drive.google.com/drive/folders/12zbB0HQ4OA57AVIkFFqS88vaD30cLNPS) 
+
+
 `Install Geomorph`
 ```
 install.packages("geomorph", dependencies = TRUE)
